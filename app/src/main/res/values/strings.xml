@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MiAplicacion</string>
+    <string name="nacionalidad">Nacionalidad</string>
+    <string name="nombres">Nombres Completos</string>
+    <string name="sexo">Sexo</string>
+    <string name="categorizado">Categorizado</string>
+</resources>
