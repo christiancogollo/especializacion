@@ -21,7 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("edu.cecar.controladores ", appContext.getPackageName());
-
+        assertEquals("edu.cecar.controladores ", appContext.getPackageName() );
     }
 }
