@@ -94,8 +94,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'org.jsoup:jsoup:1.11.3'
 
-    annotationProcessor ( " org.projectlombok: lombok: 1.16.20 " )
-    testCompile ( " org.projectlombok: lombok: 1.16.20 " )
+    annotationProcessor("org.projectlombok: lombok: 1.16.20")
+    testCompile("org.projectlombok: lombok: 1.16.20")
+
 }
 
 
