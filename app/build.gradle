@@ -1,19 +1,7 @@
-
-/* se definen los Siguiente plugins
-
-	org.sonarqube: Plugins de conexion a SonarQube
-
-	jacoco-android: Plugins para la generaciÃ³n de pruebas de cobertura
-
-*/
-
 apply plugin: 'com.android.application'
-apply plugin: "org.sonarqube"
-apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 28
-
     defaultConfig {
         applicationId "edu.cecar.controladores"
         minSdkVersion 23
@@ -21,66 +9,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled=true
     }
-
     buildTypes {
-
-        debug {
-
-            //Se especifica las pruebas de cobertura al momento de realizar el debug del proyecto
-            testCoverageEnabled = true
-
-        }
-
         release {
-
-            //No Se especifica las pruebas de cobertura al momento de realizar la liberaciÃ³n del proyecto
-            testCoverageEnabled = false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-
-    testOptions {
-
-        unitTests.returnDefaultValues = true
-
-        unitTests.all {
-            jacoco {
-                includeNoLocationClasses = true
-            }
-        }
-
-    }
-}
-
-/*
- ConfiguraciÃ³n de conexion al servidor de SonarQube
-
-*/
-
-sonarqube {
-    properties {
-        property "sonar.projectName", "ProyectoMovilClase"
-        property "sonar.projectKey", "edu.cecar.extraerDatos"
-        property "sonar.projectVersion", "1.0"
-        property "sonar.sourceEncoding", "UTF-8"
-        property "sonar.host.url", "http://10.10.90.43:9000"
-        property "sonar.language", "java"
-        property "sonar.sources", "src/main/java"
-        property "sonar.login", "admin"
-        property "sonar.password", "admin"
-        property "sonar.dynamicAnalysis", "reuseReports"
-        property "sonar.tests", "src/test/java" // where the tests are located
-
-
-        property "sonar.scm.provider", "git"
-
-        property "sonar.java.coveragePlugin", "jacoco"
-        property "sonar.junit.reportsPath", "build/test-results/testDebugUnitTest/"
-        property "sonar.jacoco.reportPaths","build/jacoco/testDebugUnitTest.exec"
-        property "sonar.android.lint.report", "build/reports/jacoco/jacocoTestDebugUnitTest/jacocoTestDebugUnitTestReport.xml"
     }
 }
 
@@ -94,19 +28,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'org.jsoup:jsoup:1.11.3'
 
-    //annotationProcessor ( "org.projectlombok: lombok: 1.16.20" )
-   // testCompile( "org.projectlombok:lombok: 1.16.20" )
-
 }
-
-
-jacoco {
-    toolVersion = "0.7.9"
-}
-
-jacocoAndroidUnitTestReport {
-    csv.enabled false
-    html.enabled true
-    xml.enabled true
-}
-
